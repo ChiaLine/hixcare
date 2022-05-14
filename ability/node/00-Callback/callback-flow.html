@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 引入 tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>callback 範例</title>
+  </head>
+  <body>
+    <h1 class="m-5 text-3xl font-bold underline text-purple-600">
+      非同步流程控制 callback
+    </h1>
+    <button
+      onclick="start(stepEvent1)"
+      class="w-40 h-20 ml-5 rounded-lg border-double border-4 border-rose-900 hover:bg-rose-50"
+    >
+      hover: startClick
+    </button>
+    <div
+      class="w-80 h-80 ml-5 mt-5 rounded-lg border-double border-4 border-rose-900 hover:bg-rose-50"
+    >
+      <ul id="log" class="p-5">
+        <li>預期結果：</li>
+      </ul>
+    </div>
+    
+    <script src="./callback.js"></script>
+  </body>
+</html>
