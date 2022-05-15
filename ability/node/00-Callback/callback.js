@@ -1,67 +1,54 @@
-// 思考方向： callback、參數傳遞
-// 預期的輸出結果： step 0 1 2 stepDone
-// 點擊按鈕會觸發 start()
-
 const step0 = 'step 0 - start'
 const step1 = 'step 1 - run'
 const step2 = 'step 2 - run'
 const stepDone = 'step Done'
 
-
-// const li  = document.createElement('li')
-
-// const start = (callback) => {
-//   setTimeout(() => {
-//     console.log(step0)
-//     callback()
-//   }, 500)
-// }
-
-// const stepEvent1 = (step0) => {
-//   console.log(step1)
-//   stepEvent2(stepEventDone)
-// }
-// const stepEvent2 = (callback) => {
-//   setTimeout(() => {
-//     console.log(step2)
-//     callback()
-//   }, 500)
-// }
-// const stepEventDone = (step2) => {
-//   console.log(stepDone)
-// }
-
-// start(stepEvent1)
-
+// 思考方向： callback、參數傳遞
+// 預期的輸出結果： step 0 1 2 stepDone
+// 點擊按鈕會觸發 start(stepEvent1)
 
 const start = (callback) => {
+  // 延遲 0.5秒後 執行程式
   setTimeout(() => {
-    console.log(step0)
-    let res = callback()
-    res(stepEvent2)
+    createLiElement(step0) // 建立 li 把值傳遞進去
+    let fun = callback() // 執行stepEvent1 回傳值為 fun
+    fun(stepEvent2) // 再執行fun 把stepEvent2 當參數傳入
   }, 500)
 }
 
-
 const stepEvent1 = () => {
   return (callback) => {
-    console.log(step1)
-    let x = callback()
-    x()
+    createLiElement(step1)
+    let fun = callback() // 執行stepEvent2 回傳值為 fun
+    fun(stepEventDone) // 再執行fun 把stepEventDone 當參數傳入
   }
 }
 
-const stepEvent2 = (x) => {
-  return () => {
+const stepEvent2 = () => {
+  return (callback) => {
     setTimeout(() => {
-      console.log(step2)
-      stepEventDone()
+      createLiElement(step2)
+      callback(clearLi) // 執行stepEventDone 把clearLi 當參數傳入
     }, 500)
   }
 }
 
-const stepEventDone = () => {
-  return console.log(stepDone)
+const stepEventDone = (callback) => {
+  createLiElement(stepDone)
+  callback() // 執行clearLi 
 }
 
-start(stepEvent1)
+// 取得＆建立節點、新增＆清除 更新畫面資料
+const ul = document.querySelector('#log')
+
+function createLiElement(value){
+  const a = document.createElement('li')
+  a.innerHTML = value
+  ul.appendChild(a)
+}
+
+function clearLi() {
+  window.setTimeout(function(){
+    ul.innerHTML = '<li>預期結果：</li>'
+  }, 3000)
+}
