@@ -18,9 +18,11 @@ const start = (callback) => {
 
 const stepEvent1 = () => {
   return (callback) => {
-    createLiElement(step1)
-    let fun = callback() // 執行stepEvent2 回傳值為 fun
-    fun(stepEventDone) // 再執行fun 把stepEventDone 當參數傳入
+    setTimeout(() => {
+      createLiElement(step1)
+      let fun = callback() // 執行stepEvent2 回傳值為 fun
+      fun(stepEventDone) // 再執行fun 把stepEventDone 當參數傳入
+    }, 500)
   }
 }
 
@@ -34,8 +36,10 @@ const stepEvent2 = () => {
 }
 
 const stepEventDone = (callback) => {
-  createLiElement(stepDone)
-  callback() // 執行clearLi 
+  setTimeout(() => {
+    createLiElement(stepDone)
+    callback() // 執行clearLi
+  }, 500) 
 }
 
 // 取得＆建立節點、新增＆清除 更新畫面資料
