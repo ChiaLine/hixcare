@@ -10,13 +10,22 @@
   </head>
   <body>
     <h1 class="m-5 text-3xl font-bold underline text-purple-600">非同步流程控制 Promise</h1>
-    <button onclick="test()" class="w-20 h-20 m-3 rounded-lg bg-orange-100">Test</button>
-    <button onclick="hoverTest()" class="w-32 h-20 m-3 rounded-lg border-double border-4 border-rose-900 hover:bg-rose-200"> hover: Test</button>
-    <button onclick="clickTest()" class="red w-20 h-20 m-2 rounded-full bg-red-100">clickTest</button>
+    <button onclick="clickPromiseThenCatch()" class="w-20 h-20 m-3 rounded-lg bg-orange-100">Promise</button>
+    <button onclick="clickPromiseAll()" class="red w-32 h-20 m-2 rounded-full bg-red-100">Promise.all</button>
+    <button onclick="clickAsyncAwait()" class="w-32 h-20 m-3 rounded-lg border-double border-4 border-gray-900 hover:bg-gray-100"> AsyncAwait</button>
+    <button class="green w-20 h-20 m-2 rounded-full bg-green-100">小明</button>
 
-    <script src="./promise.js"></script>
+    <div
+      class="w-80 h-80 ml-5 mt-5 rounded-lg border-dashed border-2 border-sky-500 hover:bg-blue-50"
+    >
+      <ul id="log" class="p-5">
+        <li class="mb-2">預期結果： 三秒後清除內容</li>
+      </ul>
+    </div>
+
+    <script type="module" src="./promise02.js"></script>
+    <script type="module" src="./promise.js"></script>
     <script src="./promise01.js"></script>
-    <script src="./promise02.js"></script>
 </button>
   </body>
 </html>
