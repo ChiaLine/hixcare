@@ -8,12 +8,10 @@ function createLiElement(value){
 }
 
 function clearLi() {
-  // const ul = document.querySelector('#log')
   window.setTimeout(function(){
     ul.innerHTML = '<li class="mb-2">回傳結果： 三秒後清除內容</li>'
   }, 3000)
 }
 
 // module.exports = {createLiElement, clearLi };
-
 export { createLiElement, clearLi }
