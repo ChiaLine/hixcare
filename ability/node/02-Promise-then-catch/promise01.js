@@ -15,10 +15,39 @@ let mingRunPromise = (someone) => {
   });
 }
 
-mingRunPromise('小明').then((data)=> {
-  // 成功訊息 (需要 3 秒)
-  console.log(data);
-}).catch((err)=> {
-  // 失敗訊息 (立即)
-  console.log(err)
-});
+const but = document.querySelector('.green')
+
+but.addEventListener('click', event => {
+  // console.log(event)
+
+  let mingRun = mingRunPromise(event.target.innerHTML)
+  createLiElement(`${event.target.innerHTML} 開始跑`)
+
+  mingRun
+  .then((data)=> {
+    // 成功訊息 (需要 3 秒)
+    console.log(data);
+    createLiElement(data)
+    clearLi()
+  }).catch((err)=> {
+    // 失敗訊息 (立即)
+    console.log(err)
+    createLiElement(err)
+    clearLi()
+  });
+})
+
+// 取得＆建立節點、新增＆清除 更新畫面資料
+const ul = document.querySelector('#log')
+
+function createLiElement(value){
+  const a = document.createElement('li')
+  a.innerHTML = value
+  ul.appendChild(a)
+}
+
+function clearLi() {
+  window.setTimeout(function(){
+    ul.innerHTML = '<li class="mb-2">回傳結果： 三秒後清除內容</li>'
+  }, 3000)
+}
