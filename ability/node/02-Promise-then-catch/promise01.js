@@ -1,5 +1,6 @@
 import { createLiElement, clearLi } from './renderPromise.js'
 import { mingRunPromise } from './mingRunPromise.js'
+import { runPromise } from './runPromise.js'
 
 const greenBut = document.querySelector('.green')
 
@@ -41,4 +42,31 @@ blueBut.addEventListener('click', event => {
     createLiElement(err)
     clearLi()
   });
+})
+
+const pinkBut = document.querySelector('.pink')
+// Promise.all 方法
+pinkBut.addEventListener('click', (event) => {
+  // console.log(event)
+  Promise.all([runPromise('小明', 1000, true), runPromise('阿姨', 2000, true)])
+  .then((arrays)=> {
+    console.log(arrays)
+    arrays.forEach(array => {
+      createLiElement(array)
+    })
+  })
+  .catch((err)=> {
+    createLiElement(err)
+  })
+})
+const orangeBut = document.querySelector('.orange')
+//Promise.race 方法
+orangeBut.addEventListener('click', (event) => {
+  Promise.race([runPromise('小明', 1000, true), runPromise('阿姨', 200, true)])
+  .then((data)=> {
+    createLiElement(data)
+  })
+  .catch((err)=> {
+    createLiElement(err)
+  })
 })
