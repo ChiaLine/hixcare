@@ -1,45 +1,23 @@
-let mingRunPromise = (someone, time) => {
+let mingRunPromise = () => {
   return new Promise((resolve, reject) => {
-    try{
-      // const ran = parseInt(Math.random() * 2); // 隨機 成功1 失敗0
-      const ran = 1 // 成功
-
-      console.log(`${someone} 開始跑.. ${ran}`);
-
-      // 條件判斷
-      if (!ran) {
-        return reject(new Error(`${someone} 跌倒失敗(rejected)`))
+    setTimeout(function() {
+      try {
+        const r = parseInt(Math.random() * 2)
+        const j = (r === 0) ? null : { foo: function() {} };
+        j.foo()
+        // 約會
+        resolve(`告白成功`);
+        setTimeout(() => {console.log('告白後繼續去夜店')}, 0)
+      } catch(e) {
+        // 了解失敗原因
+        reject('告白失敗')
+        console.log('告白失敗後繼續約看電影')
       }
-      
-      setTimeout(function(){
-        try {
-          resolve(`${someone} 跑了 ${time/1000} 秒時間(fulfilled)`);
-          const i = 3/0   // Infinity
-          const j = null
-          j.foo()
-        } catch(e) {
-          console.log("catch區:", e)
-        }
-      }, time);
-      
-
-      // j.foo() // 未定義
-      
-      // setTimeout(function(){
-      //   resolve(`${someone} 跑了 ${time/1000} 秒時間(fulfilled)`);
-      //   const i = 3/0   // Infinity
-      //   const j = null
-      //   j.foo()
-      // }, time);
-      
-
-    } catch(err){
-      console.log("進入catch區塊：", err)
-    }
+    }, 500);
   });
 }
 
-mingRunPromise('egg',1000)
+mingRunPromise()
   .then((data)=> {
     console.log("成功resolve訊息:", data)
   }).catch((err)=> {
