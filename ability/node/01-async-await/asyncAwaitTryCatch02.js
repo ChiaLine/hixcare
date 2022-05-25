@@ -39,7 +39,7 @@ async function home3() {
   }
 }
 
-home3()
+// home3()
 
 
 // 搬家 同時打包 最後在一起處理
@@ -58,7 +58,6 @@ async function home2() {
     return `${e}，在買新的吧！`
   })
 
-
   const p1 = await pack1
   const p2 = await pack2
   const p3 = await pack3
@@ -70,3 +69,29 @@ async function home2() {
 }
 
 // home2()
+
+
+
+// 搬家 同時打包 最後在一起處理
+async function home4() {
+  const pack1 = await pack("廚房", 0).catch((e) => {
+    // console.log(e)
+  })
+  console.log(pack1, '1')
+  
+  const pack2 = await pack("客廳", 2000).catch((e) => {
+    // console.log(e)
+    return `${e}，在買新的吧！`
+  })
+  console.log(pack2, '2')
+
+  const pack3 = await pack("房間", 2000).catch((e) => {
+    // console.log(e)
+    return `${e}，在買新的吧！`
+  })
+  console.log(pack3, '3')
+
+  console.log('順利結束大搬家!!')
+}
+
+home4()
