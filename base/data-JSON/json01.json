@@ -1,0 +1,82 @@
+{
+  "name": "小明",
+  "gender": "男",
+  "children": [
+    {
+      "name": "小明的女兒",
+      "gender": "女",
+      "children": [
+        {
+          "name": "小明的孫女",
+          "gender": "女",
+          "children": [
+            {
+              "name": "小明的曾孫女",
+              "gender": "女",
+              "children": []
+            },
+            {
+              "name": "小明的曾孫子",
+              "gender": "男",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "小明的孫子",
+          "gender": "男",
+          "children": [
+            {
+              "name": "小明的曾孫女",
+              "gender": "女",
+              "children": []
+            },
+            {
+              "name": "小明的曾孫子",
+              "gender": "男",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "小明的兒子",
+      "gender": "男",
+      "children": [
+        {
+          "name": "小明的孫女",
+          "gender": "女",
+          "children": [
+            {
+              "name": "小明的曾孫女",
+              "gender": "女",
+              "children": []
+            },
+            {
+              "name": "小明的曾孫子",
+              "gender": "男",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "小明的孫子",
+          "gender": "男",
+          "children": [
+            {
+              "name": "小明的曾孫女",
+              "gender": "女",
+              "children": []
+            },
+            {
+              "name": "小明的曾孫子",
+              "gender": "男",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
