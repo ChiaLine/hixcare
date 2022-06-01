@@ -23,6 +23,9 @@ axios.interceptors.response.use(function (response) {
     case 304:
       console.log("下午場票已售完")
       break;
+    case 400:
+      console.log("沒有販售學生票")
+      break;
     case 404:
       console.log("且試天下未上映")
       break;
@@ -30,6 +33,8 @@ axios.interceptors.response.use(function (response) {
       console.log("無法網路訂票")
       break;
     default:
+      // 不預期錯誤 傳送通知
+      postMessage(`不如預期的狀態碼錯誤：${error.response.status}`)
   }
 
   return Promise.reject(error)
@@ -37,11 +42,12 @@ axios.interceptors.response.use(function (response) {
 
 async function getHTTP() {
   try {
-    const httpNumbers = [301, 302, 304, 200, 500, 404]
-    const index = parseInt(Math.random() * 6); // 隨機 0 ~ 5
+    const httpNumbers = [301, 302, 304, 200, 500, 404, 400, 503, 502]
+    const index = parseInt(Math.random() * 9); // 隨機 0 ~ 5
     const httpNumber = httpNumbers[index]
 
     const response = await axios.get(`https://httpstat.us/${httpNumber}`)
+    // const response = await axios.get(`https://httpstat.us/503`)
     console.log(response.status, "成功完成訂票 出門")
 
   } catch(e) {
@@ -51,3 +57,23 @@ async function getHTTP() {
 }
 
 getHTTP()
+
+async function postMessage(message){
+
+  try {
+    console.log(message)
+    const res = await axios({
+      method: 'post',
+      url: `https://notify-api.line.me/api/notify`,
+      params: {
+        message: message
+      },
+      headers: {
+        Authorization: `Bearer QS1apjr7MLUn6w2eIhDEH8Sln6hpN4M9q3vwMRkeCqF`,
+      }
+    })
+    console.log(res.data)
+  } catch (error) {
+    console.log(error)
+  }
+}
