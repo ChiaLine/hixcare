@@ -10,14 +10,14 @@
       "left": {
         "name": "小明曾祖父",
         "gender": "男",
-        "left": {},
-        "right": {}
+        "left": null,
+        "right": null
       },
       "right": {
         "name": "小明曾祖母",
         "gender": "女",
-        "left": {},
-        "right": {}
+        "left": null,
+        "right": null
       }
     },
     "right": {
@@ -26,14 +26,14 @@
       "left": {
         "name": "小明外曾祖父",
         "gender": "女",
-        "left": {},
-        "right": {}
+        "left": null,
+        "right": null
       },
       "right": {
         "name": "小明外曾祖母",
         "gender": "女",
-        "left": {},
-        "right": {}
+        "left": null,
+        "right": null
       }
     }
   },
@@ -46,14 +46,14 @@
       "left": {
         "name": "小明外曾祖父",
         "gender": "女",
-        "left": {},
-        "right": {}
+        "left": null,
+        "right": null
       },
       "right": {
         "name": "小明外曾祖母",
         "gender": "女",
-        "left": {},
-        "right": {}
+        "left": null,
+        "right": null
       }
     },
     "right": {
@@ -62,14 +62,14 @@
       "left": {
         "name": "小明外曾祖父",
         "gender": "女",
-        "left": {},
-        "right": {}
+        "left": null,
+        "right": null
       },
       "right": {
         "name": "小明外曾祖母",
         "gender": "女",
-        "left": {},
-        "right": {}
+        "left": null,
+        "right": null
       }
     }
   }
