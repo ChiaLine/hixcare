@@ -8,6 +8,7 @@ const numTilePossibilities = function(tiles) {
   }
   // 位置＆字串次數
   for(let i = 0; i < tiles.length; i++) {
+    // charCodeAt()可返回字符的Unicode 編碼
     const tileIndex = tiles.charCodeAt(i) - "A".charCodeAt(0)
     count[tileIndex]++
   }

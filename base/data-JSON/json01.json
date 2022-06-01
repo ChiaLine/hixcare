@@ -1,82 +1,76 @@
 {
   "name": "小明",
   "gender": "男",
-  "children": [
-    {
-      "name": "小明的女兒",
-      "gender": "女",
-      "children": [
-        {
-          "name": "小明的孫女",
-          "gender": "女",
-          "children": [
-            {
-              "name": "小明的曾孫女",
-              "gender": "女",
-              "children": []
-            },
-            {
-              "name": "小明的曾孫子",
-              "gender": "男",
-              "children": []
-            }
-          ]
-        },
-        {
-          "name": "小明的孫子",
-          "gender": "男",
-          "children": [
-            {
-              "name": "小明的曾孫女",
-              "gender": "女",
-              "children": []
-            },
-            {
-              "name": "小明的曾孫子",
-              "gender": "男",
-              "children": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "小明的兒子",
+  "left": {
+    "name": "小明爸爸",
+    "gender": "男",
+    "left": {
+      "name": "小明祖父",
       "gender": "男",
-      "children": [
-        {
-          "name": "小明的孫女",
-          "gender": "女",
-          "children": [
-            {
-              "name": "小明的曾孫女",
-              "gender": "女",
-              "children": []
-            },
-            {
-              "name": "小明的曾孫子",
-              "gender": "男",
-              "children": []
-            }
-          ]
-        },
-        {
-          "name": "小明的孫子",
-          "gender": "男",
-          "children": [
-            {
-              "name": "小明的曾孫女",
-              "gender": "女",
-              "children": []
-            },
-            {
-              "name": "小明的曾孫子",
-              "gender": "男",
-              "children": []
-            }
-          ]
-        }
-      ]
+      "left": {
+        "name": "小明曾祖父",
+        "gender": "男",
+        "left": {},
+        "right": {}
+      },
+      "right": {
+        "name": "小明曾祖母",
+        "gender": "女",
+        "left": {},
+        "right": {}
+      }
+    },
+    "right": {
+      "name": "小明祖母",
+      "gender": "女",
+      "left": {
+        "name": "小明外曾祖父",
+        "gender": "女",
+        "left": {},
+        "right": {}
+      },
+      "right": {
+        "name": "小明外曾祖母",
+        "gender": "女",
+        "left": {},
+        "right": {}
+      }
     }
-  ]
+  },
+  "right": {
+    "name": "小明媽媽",
+    "gender": "女",
+    "left": {
+      "name": "小明外祖父",
+      "gender": "男",
+      "left": {
+        "name": "小明外曾祖父",
+        "gender": "女",
+        "left": {},
+        "right": {}
+      },
+      "right": {
+        "name": "小明外曾祖母",
+        "gender": "女",
+        "left": {},
+        "right": {}
+      }
+    },
+    "right": {
+      "name": "小明外祖母",
+      "gender": "女",
+      "left": {
+        "name": "小明外曾祖父",
+        "gender": "女",
+        "left": {},
+        "right": {}
+      },
+      "right": {
+        "name": "小明外曾祖母",
+        "gender": "女",
+        "left": {},
+        "right": {}
+      }
+    }
+  }
 }
