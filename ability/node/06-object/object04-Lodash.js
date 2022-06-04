@@ -5,10 +5,10 @@
 
 const _ = require("lodash");
 
-console.log('-----  _.cloneDeep() 複製 -----------')
-const srcInst = { a: 1 };
-const destInst = _.cloneDeep(srcInst); // 深拷贝
-console.log(JSON.stringify(destInst, null, 2));
+// console.log('-----  _.cloneDeep() 複製 -----------')
+// const srcInst = { a: 1 };
+// const destInst = _.cloneDeep(srcInst); // 深拷贝
+// console.log(JSON.stringify(destInst, null, 2));
 
 
 console.log('-----複製並且填滿預設值---- 寫死預設值 -----------')
@@ -32,3 +32,11 @@ const destInst3 = _.defaults(srcInst3, defaultInst3);
 console.log(destInst3);
 console.log(srcInst3);
 console.log(defaultInst3);
+
+console.log('----- 不理想值為 null 無效 undefined 有效 能被預設值替代 -----')
+const defaultInst = { a: 0, b: 0 };
+// const srcInst = { a: undefined };
+const srcInst = { a: null };
+const destInst = _.cloneDeep(srcInst)
+_.defaults(destInst, defaultInst);
+console.log(JSON.stringify(destInst, null, 2))
