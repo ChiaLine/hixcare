@@ -1,49 +1,58 @@
 <template>
   <div id="app">
-    <h1>投球 紀錄板</h1>
+    <!-- <h1>投球 紀錄板</h1> -->
     <!-- <ScoreBoard1 
     :score="score" 
     @after-add-hit="afterAddHit" 
     @after-add-miss="afterAddMiss"  
     /> -->
 
-    <ScoreBoard2 
+    <!-- <ScoreBoard2 
     :score="score" 
     @is-add-miss="isAddMiss" 
     @is-add-hit="isAddHit" 
-    />
+    /> -->
 
-    <h1>v-model</h1>
+    <h1>子元件 投球 紀錄板 v-model</h1>
     <ScoreBoard3
     v-model="score"
     />
+    <!-- <ScoreBoard3
+    v-model="score"
+    /> -->
 
+    <h2>父元件 命中次數 / 投球次數 紀錄板</h2>
     <div class="add-hit-miss-content">
       <p>hit: {{ score.hit }}</p>
       <p>shoot: {{ score.shoot }}</p>
     </div>
+    <button @click="updateHit"> 從父元件 改變 shoot & hit 值＋1 </button>
+    <button @click="updateMiss"> 改變 shoot 值＋1 </button>
   </div>
 </template>
 
 <script>
 // import ScoreBoard1 from './components/ScoreBoard1.vue'
-import ScoreBoard2 from './components/ScoreBoard2.vue'
+// import ScoreBoard2 from './components/ScoreBoard2.vue'
 import ScoreBoard3 from './components/ScoreBoard3.vue'
 
 export default {
   name: 'App',
   components: {
     // ScoreBoard1,
-    ScoreBoard2,
+    // ScoreBoard2,
     ScoreBoard3,
   },
   data(){
     return {
       score: {
-        hit: 2,
-        shoot: 3
+        hit: 0,
+        shoot: 0
       }
     }
+  },
+  beforeUpdate(){
+    console.log('APP beforeUpdate')
   },
   methods: {
     // 第一版 接 子元件傳遞資料 修改 父元件 data
@@ -64,12 +73,22 @@ export default {
       console.log('第二版')
       this.score.shoot++
       this.score.hit++
+    },
+    // 第三版
+    updateMiss(){
+      console.log('第3版 update-miss')
+      this.score.shoot++
+    },
+    updateHit(){
+      console.log('第3版 update-hut')
+      this.score.shoot++
+      this.score.hit++
     }
   }
 }
 </script>
 
-<style>
+<style >
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -95,5 +114,17 @@ p {
   border-radius: 25px;
   width: 45%;
   font-size: 35px;
+}
+
+button {
+  /* width: 320px; */
+  height: 50px;
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 15px;
+  background: #b5f0fd;
+  border: none;
+  color: #000;
+  font-size: 20px;
 }
 </style>

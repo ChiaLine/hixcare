@@ -3,50 +3,85 @@
   <dir class="main">
     <span>投球命中率</span>
     <div class="top">
-      <div class="hit-content">{{  }} %</div>
+      <div class="hit-content">{{ averageScore3 }} %</div>
       <button class="hit-button" :value="1" 
-      @click.stop.prevent="handleAddHitButtonClick">Hit</button>
+      @click.stop.prevent="handleAddHitButtonClick">子元件 Hit+1</button>
     </div>
     <span>命中次數 / 投球次數</span>
     <div class="bottom">
-      <div class="miss-content">{{  }} / {{  }}</div>
+      <div class="miss-content">{{ score.hit }} / {{ score.shoot }}</div>
       <button class="miss-button" 
-      @click.stop.prevent="handleAddMissButtonClick">Miss</button>
+      @click.stop.prevent="handleAddMissButtonClick"> 子元件 Miss+1</button>
     </div>
   </dir>
 </template>
 
 <script>
 export default {
-  name: "ScoreBoard",
-  props: {
-    score: Object,
+  name: "ScoreBoard3",
+  // model屬性定義方法 更改 prop名稱 event事件
+  model: {
+    prop: 'value', // 預設是 value
+    // event: 'input', // 預設監聽事件是 input
+    event: 'input', // 預設監聽事件是 input
   },
-  // 第一版
-    data() {
-      return {
-        
-      }
-    },
+  // 檢查验证 type型別 default默认值 required必填
+  props: {
+    value: {
+      type: Object
+    }
+  },
+  data() {
+    return {
+      // 傳址
+      // score: this.value
+      // 拷貝一份 傳進來的資料 傳值
+      score: {}
+    }
+  },
+  created(){
+    console.log('created', this.score)
+    this.getValue()
+  },
   methods: {
-    // 父元件掛監聽 子元件傳遞 資料
+    getValue(){
+      this.score = { ... this.value }
+      console.log('getValue')
+      console.log(this.score)
+    },
     handleAddHitButtonClick(){
-      console.log("第3版 v-model")
-      // this.$emit("is-add-hit")
+      console.log("第3版 v-model 自動更新？")
+      this.score.hit++
+      this.score.shoot++
+      this.$emit('input', this.score)
+      // this.$emit('input')
     },
     handleAddMissButtonClick(){
       console.log('第3版 v-model')
-      // this.$emit("is-add-miss")
+      this.score.shoot++
+      this.$emit('input', this.score)
     }
+  },
+  beforeUpdate(){
+    console.log('beforeUpdate')
   },
   computed: {
     // 計算命中率
-    // averageScore3: function() {
-    //   let average = Math.round((this.score.hit / this.score.shoot) * 100)
-    //   console.log(average)
-    //   return this.score.hit > 0 ? average : 0
-    // }
-  }
+    averageScore3: function() {
+      if (this.score.hit > 0 && this.score.shoot === 0) {
+        return 0
+      }
+
+      let average = Math.round((this.score.hit / this.score.shoot) * 100)
+      // console.log(average)
+      return this.score.hit > 0 ? average : 0
+    }
+  },
+  // wahch: {
+  //   value(new_value, old_value) {
+  //     console.log(new_value, old_value)
+  //   }
+  // }
 };
 </script>
 
@@ -86,7 +121,7 @@ span {
 
 button {
   width: 100px;
-  height: 50px;
+  height: 70px;
   border-radius: 15px;
   background: #cddcee;
   border: none;
