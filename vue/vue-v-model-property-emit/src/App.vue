@@ -1,14 +1,21 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <h1>投球 紀錄板</h1>
-    <ScoreBoard :score="score" 
+    <!-- <ScoreBoard1 
+    :score="score" 
     @after-add-hit="afterAddHit" 
-    @after-add-miss="afterAddMiss" 
+    @after-add-miss="afterAddMiss"  
+    /> -->
+
+    <ScoreBoard2 
+    :score="score" 
     @is-add-miss="isAddMiss" 
     @is-add-hit="isAddHit" 
-    
+    />
+
+    <h1>v-model</h1>
+    <ScoreBoard3
+    v-model="score"
     />
 
     <div class="add-hit-miss-content">
@@ -19,20 +26,22 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import ScoreBoard from './components/ScoreBoard.vue'
+// import ScoreBoard1 from './components/ScoreBoard1.vue'
+import ScoreBoard2 from './components/ScoreBoard2.vue'
+import ScoreBoard3 from './components/ScoreBoard3.vue'
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld
-    ScoreBoard
+    // ScoreBoard1,
+    ScoreBoard2,
+    ScoreBoard3,
   },
   data(){
     return {
       score: {
-        hit: 7,
-        shoot: 10
+        hit: 2,
+        shoot: 3
       }
     }
   },
@@ -48,9 +57,11 @@ export default {
     },
     // 第二版 接 子元件觸發通知 父元件才修改資料
     isAddMiss(){
+      console.log('第二版')
       this.score.shoot++
     },
     isAddHit(){
+      console.log('第二版')
       this.score.shoot++
       this.score.hit++
     }
