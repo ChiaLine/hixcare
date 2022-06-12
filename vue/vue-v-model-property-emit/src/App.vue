@@ -15,16 +15,17 @@
 
     <h1>子元件 投球 紀錄板 v-model</h1>
     <ScoreBoard3
-    v-model="score"
+    v-model="scoreA"
     />
-    <!-- <ScoreBoard3
-    v-model="score"
-    /> -->
+
+    <ScoreBoard4
+    v-model="scoreA"
+    />
 
     <h2>父元件 命中次數 / 投球次數 紀錄板</h2>
     <div class="add-hit-miss-content">
-      <p>hit: {{ score.hit }}</p>
-      <p>shoot: {{ score.shoot }}</p>
+      <p>hit: {{ scoreA.hit }}</p>
+      <p>shoot: {{ scoreA.shoot }}</p>
     </div>
     <button @click="updateHit"> 從父元件 改變 shoot & hit 值＋1 </button>
     <button @click="updateMiss"> 改變 shoot 值＋1 </button>
@@ -35,6 +36,7 @@
 // import ScoreBoard1 from './components/ScoreBoard1.vue'
 // import ScoreBoard2 from './components/ScoreBoard2.vue'
 import ScoreBoard3 from './components/ScoreBoard3.vue'
+import ScoreBoard4 from './components/ScoreBoard4.vue'
 
 export default {
   name: 'App',
@@ -42,47 +44,45 @@ export default {
     // ScoreBoard1,
     // ScoreBoard2,
     ScoreBoard3,
+    ScoreBoard4,
   },
   data(){
     return {
-      score: {
+      scoreA: {
         hit: 0,
-        shoot: 0
+        shoot: 3
       }
     }
   },
-  beforeUpdate(){
-    console.log('APP beforeUpdate')
-  },
   methods: {
     // 第一版 接 子元件傳遞資料 修改 父元件 data
-    afterAddMiss(shoot){
-      console.log("afterAddMiss", shoot)
-      this.score.shoot = shoot
-    },
-    afterAddHit(scoreBoard){
-      console.log('afterAddHit', scoreBoard)
-      this.score = scoreBoard
-    },
-    // 第二版 接 子元件觸發通知 父元件才修改資料
-    isAddMiss(){
-      console.log('第二版')
-      this.score.shoot++
-    },
-    isAddHit(){
-      console.log('第二版')
-      this.score.shoot++
-      this.score.hit++
-    },
+    // afterAddMiss(shoot){
+    //   console.log("afterAddMiss", shoot)
+    //   this.score.shoot = shoot
+    // },
+    // afterAddHit(scoreBoard){
+    //   console.log('afterAddHit', scoreBoard)
+    //   this.score = scoreBoard
+    // },
+    // // 第二版 接 子元件觸發通知 父元件才修改資料
+    // isAddMiss(){
+    //   console.log('第二版')
+    //   this.score.shoot++
+    // },
+    // isAddHit(){
+    //   console.log('第二版')
+    //   this.score.shoot++
+    //   this.score.hit++
+    // },
     // 第三版
     updateMiss(){
-      console.log('第3版 update-miss')
-      this.score.shoot++
+      this.scoreA.shoot++
+      // console.log('第3版 當父元件自己的資料改變時')
     },
     updateHit(){
-      console.log('第3版 update-hut')
-      this.score.shoot++
-      this.score.hit++
+      this.scoreA.shoot++
+      this.scoreA.hit++
+      // console.log('第3版 當父元件自己的資料改變時')
     }
   }
 }
