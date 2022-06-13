@@ -1,59 +1,33 @@
-<template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <!-- <HelloWorld/> -->
-      <Navbar/>
-    </v-main>
-  </v-app>
+<template lang="pug">
+  v-app
+    v-app-bar(app color='primary' dark)
+      .d-flex.align-center
+        v-img.shrink.mr-2(alt='Vuetify Logo' contain src='https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png' transition='scale-transition' width='40')
+          v-img.shrink.mt-1.hidden-sm-and-down(alt='Vuetify Name' contain min-width='100' src='https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png' width='100').
+            
+            
+      v-spacer
+      v-btn(href='https://github.com/vuetifyjs/vuetify/releases/latest' target='_blank' text)
+        span.mr-2 Latest Release
+        v-icon mdi-open-in-new
+    v-main
+      Carousel
+      card
+      //- navbar
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld';
-import Navbar from './components/Navbar';
+import Navbar from "./components/Navbar";
+import Card from "./components/Card";
+import Carousel from "./components/Carousel.vue";
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
-    // HelloWorld,
-    Navbar
+    Navbar,
+    Card,
+    Carousel
   },
 
   data: () => ({
