@@ -1,25 +1,33 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <Navbar />
-    <Card />
+    <b-container>
+      <!-- Content here -->
+      <Navbar />
+      <Card />
+      <Tabs />
+      <Cards />
+      <Modal />
+    </b-container>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import Card from './components/Card.vue'
-import Navbar from './components/Navbar.vue'
+import Navbar from "./components/Navbar.vue";
+import Card from "./components/Card.vue";
+import Cards from "./components/Cards.vue";
+import Tabs from "./components/Tabs.vue";
+import Modal from "./components/Modal.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    // HelloWorld,
+    Navbar,
     Card,
-    Navbar
-  }
-}
+    Cards,
+    Tabs,
+    Modal
+  },
+};
 </script>
 
 <style>
