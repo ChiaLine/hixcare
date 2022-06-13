@@ -51,6 +51,7 @@ export default {
     };
   },
   //? computed 屬性動態處理 data資料的呈現
+  // ! 在每次渲染時都會觸發 computed
   computed: {
     //? 仅读取
     averageScore4: function () {
@@ -68,6 +69,7 @@ export default {
         this.getValue()
         return this.score //! 读取
       },
+      // ? 觸發點 需先綁定v-mo在元素上 值改變才觸發
       // set(value) {
       //   console.log(value)
       //   this.$emit('input', value) //! 设置 
