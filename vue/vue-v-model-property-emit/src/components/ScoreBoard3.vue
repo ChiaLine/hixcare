@@ -43,6 +43,9 @@ export default {
       // default: 默认值
       // required: 資料是否必填
     },
+    modified: {
+      type: String,
+    }
   },
   data() {
     return {
@@ -53,6 +56,7 @@ export default {
   // ? 頁面建立時
   created() {
     this.getValue();
+    console.log(this.modified)
   },
   //? 當自己的資料有更新時會觸發
   beforeUpdate() {
@@ -60,20 +64,25 @@ export default {
   },
   // ? watch監聽 value屬性的值 預設 單層監聽
   watch: {
-    value: {
-      handler: "getValue", //! 執行fun
-      deep: true,  // ! 是否深層監聽
-      // immediate: true //! 刷新页面后是否立即监听此对象  
-    },
+    // value: {
+    //   handler: "getValue", //! 執行fun
+    //   deep: true,  // ! 是否深層監聽
+    //   // immediate: true //! 刷新页面后是否立即监听此对象  
+    // },
 
     //? 當 value內的 key改變或新增key時 才會觸發 function
     // value: function(newValue, oldValue) {},
 
     //? 當 hit的值改變時 才會觸發 getValue()方法
     // "value.hit": "getValue",
+    // "value.shoot": function(newValue, oldValue) {},
+
+    // ! 少用deep深層監聽，可以利用單層特性 傳入時間變數 監聽時間的改變
+    modified: {
+      handler: 'getValue',
+    }
 
     //? 當 shoot的值改變時 才會觸發 function 方法
-    // "value.shoot": function(newValue, oldValue) {},
     // 'value.shoot': {
     //   handler: 'getValue', 
     // },

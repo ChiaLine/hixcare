@@ -16,6 +16,7 @@
     <h1>子元件 投球 紀錄板 v-model</h1>
     <ScoreBoard3
     v-model="scoreA"
+    :modified="modified"
     />
 
     <ScoreBoard4
@@ -51,8 +52,13 @@ export default {
       scoreA: {
         hit: 0,
         shoot: 3
-      }
+      },
+      modified: ""
     }
+  },
+  created(){
+    this.modified = new Date().toISOString()
+    console.log(this.modified)
   },
   methods: {
     // 第一版 接 子元件傳遞資料 修改 父元件 data
@@ -78,11 +84,15 @@ export default {
     updateMiss(){
       this.scoreA.shoot++
       // console.log('第3版 當父元件自己的資料改變時')
+      this.modified = new Date().toISOString()
+      console.log(this.modified)
     },
     updateHit(){
       this.scoreA.shoot++
       this.scoreA.hit++
       // console.log('第3版 當父元件自己的資料改變時')
+      this.modified = new Date().toISOString()
+      console.log(this.modified)
     }
   }
 }
