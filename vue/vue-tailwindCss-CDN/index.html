@@ -5,15 +5,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="./sth.css"> -->
     <script>
       tailwind.config = {
         // 預設 media 手動切換模式要改 class
         darkMode: "class",
-        // darkMode: "media", 
+        // darkMode: "media",
         theme: {
           extend: {
             colors: {
               clifford: "#da373d",
+              // 自己設定的顏色屬性名稱
+              eggColor: "#ff0",
             },
           },
         },
@@ -21,8 +24,45 @@
     </script>
   </head>
   <body>
-    <h1 class="m-10 text-3xl font-bold underline **text-clifford**">Hello world!</h1>
+    <h1 class="m-10 text-3xl font-bold underline **text-clifford**">
+      Hello world!
+    </h1>
 
+    <h1 class="m-10 p-3 text-3xl font-bold bg-eggColor text-slate-700">
+      自定義顏色變數名設定
+    </h1>
+
+    <!-- <label class="relative block w-20 h-10 m-5">
+      <input type="checkbox" class="peer checked:bg-green-300 ..." />
+      <div class="peer-checked:translate-x-full ..."></div>
+    </label>
+
+    <label class="block">
+      <div class="border-4 box-content w-20 h-10 rounded-full bg-yellow-400">
+        <div class="rounded-full w-1/2 h-full scale-75 bg-white/75"></div>
+      </div>
+    </label> -->
+
+    <label class="relative block w-20 h-10 m-5">
+      <!-- 狀態設定 -->
+      <input
+        type="checkbox"
+        class="peer checked:bg-slate-800 appearance-none w-full h-full bg-gray-200 box-content rounded-full outline-none transition-all"
+      />
+      <!-- 圓形設定 -->
+      <div
+        class="peer-checked:translate-x-full bg-white w-1/2 h-10 absolute top-0 rounded-full scale-75 shadow-md transition-all"
+      ></div>
+    </label>
+
+    <button
+      class="dark-toggle rounded-full w-40 h-16 ml-5 bg-white dark:bg-slate-800 dark:border-slate-500 dark:text-white border-double border-4 border-slate-500"
+    >
+      toggle 切換
+    </button>
+    <h6 class="p-3 text-3xl font-bold">html class="dark"換黑暗模式時</h6>
+
+    <!-- 當 html class="dark" 換 黑暗模式時 原版 -->
     <div
       class="m-10 bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl"
     >
@@ -52,5 +92,41 @@
         upside-down. It even works in outer space.
       </p>
     </div>
+
+    <h6 class="m-10 p-3 text-3xl font-bold underline">
+      html class="dark"自定義設定
+    </h6>
+    <!-- 當 html class="dark" 自定義版本 -->
+    <div
+      class="m-10 bg-white dark:bg-yellow-100 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl"
+    >
+      <div>
+        <span
+          class="inline-flex items-center justify-center p-2 dark:bg-red-500 bg-slate-700 rounded-md shadow-lg"
+        >
+          <svg
+            class="h-6 w-6 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <!-- ... -->
+          </svg>
+        </span>
+      </div>
+      <h3
+        class="text-slate-900 dark:text-green-700 mt-5 text-base font-medium tracking-tight"
+      >
+        Writes Upside-Down
+      </h3>
+      <p class="text-slate-500 dark:text-orange-500 mt-2 text-sm">
+        The Zero Gravity Pen can be used to write in any orientation, including
+        upside-down. It even works in outer space.
+      </p>
+    </div>
+
+    <script src="./main.js"></script>
   </body>
 </html>
