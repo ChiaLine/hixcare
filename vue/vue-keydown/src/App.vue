@@ -22,16 +22,44 @@
 // import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     // HelloWorld
   },
   methods: {
     show(event) {
-      console.log(event)
-    }
-  }
-}
+      // console.log(event);
+      switch (event.key) {
+        case "ArrowUp":
+          // 按“↑”方向键时要做的事。
+          console.log(event.key, event.keyCode);
+          break;
+        case "ArrowDown":
+          // 按“↓”方向键时要做的事。
+          console.log(event.key, event.keyCode);
+          break;
+        case "ArrowLeft":
+          // 按“←”方向键时要做的事。
+          console.log(event.key, event.keyCode);
+          break;
+        case "ArrowRight":
+          // 按“→”方向键时要做的事。
+          console.log(event.key, event.keyCode);
+          break;
+        case "Enter":
+          // 按“回车”键时要做的事。
+          console.log(event.key, event.keyCode);
+          break;
+        case "Escape":
+          // 按“ESC”键时要做的事。
+          console.log(event.key, event.keyCode);
+          break;
+        default:
+          return; // 什么都没按就退出吧。
+      }
+    },
+  },
+};
 </script>
 
 <style>
@@ -48,8 +76,8 @@ div {
   margin-bottom: 15px;
 }
 
-label{
-  font-size:  26px;
+label {
+  font-size: 26px;
 }
 
 input {
