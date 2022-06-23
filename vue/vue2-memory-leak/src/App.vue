@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <p>Vue 應用程序中的內存洩漏通常不是來自 Vue 本身，而是在將其他庫合併到應用程序中時發生</p>
-    <p>這個例子的問題是該v-if指令從 DOM 中刪除了父元素，但是我們沒有清理由 Choices.js 創建的額外 DOM 片段，從而導致內存洩漏</p>
+    <h3>Vue 應用程序中的內存洩漏通常不是來自 Vue 本身，而是在將其他庫合併到應用程序中時發生</h3>
+    <h3>這個例子的問題是該 v-if指令 從 DOM 中刪除了父元素</h3>
+    <h3>但是沒有主動清理 由 Choices.js 創建的額外 DOM 片段，從而導致內存洩漏，佔用記憶體空間</h3>
     <hr />
     <!-- 官方的練習 -->
     <MemoryLeak01 />
